@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous|Roboto');
+html,body{
+    height:100%;
+    width:100%;
+    margin:0;
+}
+body{
+    background-color: #6C1D5F;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../images/pattern.png');
+}
+.container{
+    display: flex;
+    height:inherit;
+    width:inherit;
+    flex-direction: column;
+}
+.container .heading{
+    display: flex;
+    padding-top: 2.8%;
+    padding-left: 3%;
+    height:7%;
+    width:100%;
+    border-bottom: 2px solid #E2E2E2;
+    background-color:rgba(120, 120, 120, 0.7);
+}
+.container .heading .text{
+    color: #E2E2E2;
+    font-family: 'Righteous', cursive;
+    letter-spacing: 1px;
+    font-size: 30px;
+}
+
+.container .heading .logo {
+    padding-right: 1%;
+    padding-bottom: 1%;
+}
+.container .heading .logo img{
+    height:100%;
+}
+
+.container .body{
+    display: flex;
+    flex-direction: row;
+    margin-right: 10%;
+    margin-left: 10%;
+    height: 85%;
+    width: 80%;
+}
+
+.container .body > div{
+    display: flex;
+    width:33.33%;
+    height:100%;
+}
+
+.container .body > div .upload-container{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    height:50%;
+    width:100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 4px dashed rgb(116, 93, 112);
+    margin-right: 5%;
+    border-radius: 20px;
+}
+
+.container .body > div .upload-container:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow:rgba(255, 255, 255, 0.6) 0px 0px 3px 2px;
+}
+
+.container .body > div .upload-container .logo{
+    width: inherit;
+    height: 77%;
+    align-items: center;
+    display: flex;
+
+}
+.container .body > div .upload-container .logo > div{
+    margin:auto;
+    margin-left: 12%;
+}
+.container .body > div .upload-container .logo img {
+    height:70%;
+}
+
+.container .body > div .upload-container .text {
+    height:30%;
+    width:100%;
+    color:black;
+   font-weight: bolder;
+    font-size: 20px;
+    display: flex;
+}
+
+.container .body > div .upload-container .text > div{
+    margin: auto;
+    text-align: center;
+}
+
+.container .footer{
+    display: flex;
+    height:4%;
+    width:100%;
+    border-top: 2px solid #E2E2E2;
+    background-color:rgba(120, 120, 120, 0.7);
+    font-size: 14px;
+    flex-direction: row-reverse;
+}
+    .container .footer .text{
+    color:#E2E2E2;
+    font-size: 15px;
+    padding-top: 0.5%;
+    padding-right: 3%;
+    }
