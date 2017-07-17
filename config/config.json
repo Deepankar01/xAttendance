@@ -4,6 +4,13 @@
         "frame":true,
         "titleBarStyle":"hidden",
         "width": 800, 
-        "height": 600
+        "height": 600,
+        "resizable": false,
+        "maximizable":false,
+        "fullscreenable":false,
+        "kiosk":true,
+        "transparent":false,
+        "useContentSize":true,
+        "title":"xAttendance"
     }
 }
