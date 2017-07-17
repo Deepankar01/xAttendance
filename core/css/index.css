@@ -18,7 +18,6 @@ body{
 .container .heading{
     display: flex;
     padding-top: 2.8%;
-    padding-left: 3%;
     height:7%;
     width:100%;
     border-bottom: 2px solid #E2E2E2;
@@ -34,6 +33,7 @@ body{
 .container .heading .logo {
     padding-right: 1%;
     padding-bottom: 1%;
+    padding-left: 3%;
 }
 .container .heading .logo img{
     height:100%;
