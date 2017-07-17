@@ -15,7 +15,14 @@ function createWindow() {
     frame: config.window.frame, 
     titleBarStyle: config.window.titleBarStyle,
     width: config.window.width, 
-    height: config.window.height
+    height: config.window.height,
+    resizable: config.window.resizable,
+    maximizable:config.window.maximizable,
+    fullscreenable:config.window.fullscreenable,
+    kiosk:config.window.kiosk,
+    transparent:config.window.transparent,
+    useContentSize:config.window.useContentSize,
+    title:"xAttendance"
  })
 
   // and load the index.html of the app.
