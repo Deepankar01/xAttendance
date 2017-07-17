@@ -22,7 +22,7 @@ function createWindow() {
     kiosk:config.window.kiosk,
     transparent:config.window.transparent,
     useContentSize:config.window.useContentSize,
-    title:"xAttendance"
+    title: config.window.title
  })
 
   // and load the index.html of the app.
