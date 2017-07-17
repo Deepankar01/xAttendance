@@ -19,7 +19,6 @@ function createWindow() {
     resizable: config.window.resizable,
     maximizable:config.window.maximizable,
     fullscreenable:config.window.fullscreenable,
-    kiosk:config.window.kiosk,
     transparent:config.window.transparent,
     useContentSize:config.window.useContentSize,
     title: config.window.title
