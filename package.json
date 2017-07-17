@@ -4,7 +4,8 @@
   "description": "Application to help xebia hr to calculate attendance of the employees",
   "main": "main.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start":"electron ."
   },
   "keywords": [
     "xlsx",
