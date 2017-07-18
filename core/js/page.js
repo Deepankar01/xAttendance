@@ -23,7 +23,10 @@ inputFiles.forEach((inputFile) => {
 progressButton.addEventListener("click", submitData, false);
 
 
-
+/**
+ * Validate files
+ * @param {object} event 
+ */
 function validateFiles(event) {
 
     if (event.target.files.length === 0) {
