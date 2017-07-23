@@ -3,11 +3,10 @@
 // document.getElementsByClassName("upload-container").onclick = function(){
 //     alert("hello")
 // }
-
+var {ipcRenderer, remote} = require('electron');
 var uploadContainers = Array.from(document.getElementsByClassName("upload-container"));
 var inputFiles = Array.from(document.getElementsByTagName("input"));
 var progressButton = document.getElementById("progress-button");
-var form = document.createElement("form");
 
 //add click event listener
 uploadContainers.forEach((uploadContainer) => {
@@ -37,16 +36,6 @@ function validateFiles(event) {
 }
 
 /**
- * send the data 
- * @param {object} event 
- */
-function sendData(event) {
-    console.log("hello");
-    debugger;
-    event.preventDefault();
-}
-
-/**
  * 
  * @param {object} event 
  */
@@ -55,16 +44,10 @@ function openFileUploader(event) {
 }
 
 /**
- * 
+ * Function sending the data from rendered process to main process
  * @param {object} event 
  */
 function submitData(event) {
-
-    //  console.log(form);
-    //  form.action = "http://localhost:8080";
-    //  form.method = "POST";
-    //  form.enctype="multipart/form-data";
-    //  form.style.display = "none";
 
     //a final check to validate the files before submitting
     let isValid = true;
@@ -83,22 +66,14 @@ function submitData(event) {
      * If eveything is valid then send the data
      */
     if (isValid) {
-        var formData = new FormData(form);
-        //  document.body.appendChild(form);
+        var files = [];
         inputFiles.forEach((fileInputs) => {
-            formData.append(fileInputs.id.replace("-file", ""), fileInputs.files[0]);
+            files.push({"files":fileInputs.id.replace("-file", ""), "path":fileInputs.files[0].path});
         });
-        // form.addEventListener('submit',sendData,false);
-        // form.submit();
-        var request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:8080");
-        request.send(formData);
+        ipcRenderer.send('uploadFiles',files);
     }
     else {
         //show the red icon
     }
-
-
-    // document.body.removeChild(form);
 }
 

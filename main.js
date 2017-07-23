@@ -1,6 +1,6 @@
 const {core} = require("./core/");
 //core.uploadAndRetreiveData()
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow ,ipcMain} = require('electron')
 const path = require('path')
 const url = require('url')
 const config = require('./config/config.json');
@@ -55,3 +55,22 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+// Listen for async message from renderer process
+ipcMain.on('uploadFiles', (event, arg) => {  
+    // Print 1
+    let data = {};
+  arg.forEach((file)=>{
+    data[file.files] = file.path;
+  });
+  
+    new core()
+    .uploadAndRetreiveData(data.regularization,data.leaveRequest,data.biometric)
+    .stripHeaders()
+    .processData();
+
+        // .processData();
+
+    // Reply on async message from renderer process
+    event.sender.send('uploadFiles-reply', 2);
+});
