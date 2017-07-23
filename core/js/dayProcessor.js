@@ -102,8 +102,7 @@ const extractADay = function () {
         return this;
     }
     this.finalizeDay = () => {
-        console.log(this.employeeDetails)
-        return this;
+        return this.employeeDetails;
     }
 
     if (this instanceof extractADay) {

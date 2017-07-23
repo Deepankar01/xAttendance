@@ -66,13 +66,12 @@ ipcMain.on('uploadFiles', (event, arg) => {
     data[file.files] = file.path;
   });
   
-    new core()
+    var attendanceData = new core()
     .uploadAndRetreiveData(data.regularization,data.leaveRequest,data.biometric)
     .stripHeaders()
-    .processData();
-
-        // .processData();
+    .processData()
+    .composeExcel();
 
     // Reply on async message from renderer process
-    event.sender.send('uploadFiles-reply', "./finalData.xlsx");
+    event.sender.send('uploadFiles-reply', __dirname+"/attendance.xlsx");
 });

@@ -3,11 +3,13 @@
 // document.getElementsByClassName("upload-container").onclick = function(){
 //     alert("hello")
 // }
-var {ipcRenderer, remote} = require('electron');
+var { ipcRenderer, remote } = require('electron');
 var uploadContainers = Array.from(document.getElementsByClassName("upload-container"));
 var inputFiles = Array.from(document.getElementsByTagName("input"));
 var progressButton = document.getElementById("progress-button");
-
+var downloadButton = document.getElementById("download-data");
+var downloadFileLink = "";
+downloadButton.style.display = "none";
 //add click event listener
 uploadContainers.forEach((uploadContainer) => {
     uploadContainer.addEventListener("click", openFileUploader, false);
@@ -21,7 +23,7 @@ inputFiles.forEach((inputFile) => {
 //click of progress button
 progressButton.addEventListener("click", submitData, false);
 
-
+downloadButton.addEventListener("click", downloadData, false);
 /**
  * Validate files
  * @param {object} event 
@@ -68,12 +70,29 @@ function submitData(event) {
     if (isValid) {
         var files = [];
         inputFiles.forEach((fileInputs) => {
-            files.push({"files":fileInputs.id.replace("-file", ""), "path":fileInputs.files[0].path});
+            files.push({ "files": fileInputs.id.replace("-file", ""), "path": fileInputs.files[0].path });
         });
-        ipcRenderer.send('uploadFiles',files);
+        ipcRenderer.send('uploadFiles', files);
     }
     else {
         //show the red icon
     }
 }
+
+/**
+ * Function to download the data of excel
+ * @param {*} event 
+ */
+function downloadData(event) {
+    var dl = document.createElement('a');
+    dl.setAttribute('href', downloadFileLink);
+    dl.setAttribute('download', "Attendance.xlsx");
+    dl.click();
+}
+
+ipcRenderer.on("uploadFiles-reply", (event, args) => {
+    console.log(args);
+    downloadFileLink = args;
+    downloadButton.style.display = "";
+});
 

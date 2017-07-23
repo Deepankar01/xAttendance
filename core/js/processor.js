@@ -8,8 +8,9 @@ const {extractADay} = require("./dayProcessor");
  */
 const processExcels = (regularizedDataJSON, leaveRequestDataJSON, biometricDataJSON) => {
     //process employee by employee 
+    var data = [];
     for(let i=0;i< biometricDataJSON.length;i+=1){
-        new extractADay()
+       data.push(new extractADay()
         .getEmployee(biometricDataJSON[i])
         .adjustSaturdayAsWeekOf()
         .extractAbsents()
@@ -18,9 +19,9 @@ const processExcels = (regularizedDataJSON, leaveRequestDataJSON, biometricDataJ
         .extractLeaveRequestData(leaveRequestDataJSON)
         .fillLeaveRequestData()
         .fillErrors()
-        .finalizeDay()
+        .finalizeDay());
     }
-    return this;
+    return data;
 }
 
 module.exports = {

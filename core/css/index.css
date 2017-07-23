@@ -57,7 +57,9 @@ body{
 .container .body .progress-button >div{
     margin:auto;
 }
-
+.container .body .progress-button >div button:nth-child(2){
+    margin-left:12px;
+}
 .container .body .progress-button >div button{
     height: 45px;
     width: 183px;
