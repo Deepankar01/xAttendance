@@ -12,6 +12,7 @@ const processExcels = (regularizedDataJSON, leaveRequestDataJSON, biometricDataJ
     for(let i=0;i< biometricDataJSON.length;i+=1){
         new extractADay()
         .getEmployee(biometricDataJSON[i])
+        .extractAbsents()
         .extractRegularizedData(regularizedDataJSON)
         .fillReguluraizedData()
         .extractLeaveRequestData(leaveRequestDataJSON)
