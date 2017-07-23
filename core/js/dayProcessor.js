@@ -13,9 +13,16 @@ const extractADay = function () {
         let firstDay = moment(Object.keys(this.employeeDetails)[3], "DD-MMM").set("year", moment().get("year"));
         for (let i = 0; i < firstDay.daysInMonth(); i++) {
             if (moment(firstDay).add(i, "days").format("dd") === "Sa") {
-                if (this.employeeDetails[moment(firstDay).add(i, "days").format("DD-MMM")] === "A")
+                if (this.employeeDetails[moment(firstDay).add(i, "days").format("DD-MMM")] === "A"){
                     this.employeeDetails[moment(firstDay).add(i, "days").format("DD-MMM")] = "WO";
-                this.employeeDetails["WO"] = parseInt(this.employeeDetails["WO"], 10) + 1;
+                    this.employeeDetails["WO"] = parseInt(this.employeeDetails["WO"], 10) + 1;
+                    this.employeeDetails.A  = parseInt(this.employeeDetails.A, 10) - 1;
+                }
+                else if (this.employeeDetails[moment(firstDay).add(i, "days").format("DD-MMM")] === "P"){
+                    this.employeeDetails[moment(firstDay).add(i, "days").format("DD-MMM")] = "P";
+                    this.employeeDetails.WOP = parseInt(this.employeeDetails.WOP,10)+1;
+                }
+                    
             }
         }
         return this;
@@ -46,9 +53,14 @@ const extractADay = function () {
                         //delete a particular date for which it was regularized
                         delete this.absentDates[this.absentDates.indexOf(moment(from).add(i, "days").format("DD-MMM"))];
                         this.employeeDetails.P = parseInt(this.employeeDetails.P, 10) + 1;
+                        this.employeeDetails.A = parseInt(this.employeeDetails.A, 10) - 1;
                     }
                     else {
-                        this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = "ERROR"
+                        if (this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] === "P") {
+                            this.employeeDetails.P = parseInt(this.employeeDetails.P, 10) - 1;
+                        }
+                        this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = "ERROR";
+
                     }
 
                 }
@@ -69,9 +81,13 @@ const extractADay = function () {
                     if (this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] === "A") {
                         this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = selectLeaveRequestReason(leaveRequest.category);
                         delete this.absentDates[this.absentDates.indexOf(moment(from).add(i, "days").format("DD-MMM"))];
-                        this.employeeDetails.A = parseInt(this.employeeDetails.A, 10) + 1;
+                        this.employeeDetails.A = parseInt(this.employeeDetails.A, 10) - 1;
+                        this.employeeDetails.L = parseInt(this.employeeDetails.L, 10) + 1;
                     }
                     else {
+                        if (this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] === "P") {
+                            this.employeeDetails.P = parseInt(this.employeeDetails.P, 10) - 1;
+                        }
                         this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = "ERROR"
                     }
                 }
@@ -81,7 +97,7 @@ const extractADay = function () {
     }
     this.fillErrors = () => {
         this.absentDates.forEach((absent) => {
-            this.employeeDetails[absent] = "ERROR";
+            this.employeeDetails[absent] = "NOTAPPLIED";
         })
         return this;
     }
@@ -134,7 +150,7 @@ const selectRegularizedReason = (category) => {
             status = "ONSITE";
             break;
         default:
-            status = "ERROR";
+            status = "REGULARIZEDMESSEDUP";
     }
     return status;
 }
@@ -150,7 +166,7 @@ const selectLeaveRequestReason = (category) => {
             status = "CSLP";
             break;
         default:
-            status = "ERROR";
+            status = "LEAVEREQUESTMESSEDUP";
 
     }
     return status;
