@@ -32,8 +32,10 @@ function createWindow() {
   }))
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
    win.setMenuBarVisibility(false);
+   win.setAutoHideMenuBar(true);
+   win.setMenu(null);
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -72,5 +74,5 @@ ipcMain.on('uploadFiles', (event, arg) => {
         // .processData();
 
     // Reply on async message from renderer process
-    event.sender.send('uploadFiles-reply', 2);
+    event.sender.send('uploadFiles-reply', "./finalData.xlsx");
 });

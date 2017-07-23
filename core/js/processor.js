@@ -21,22 +21,6 @@ const processExcels = (regularizedDataJSON, leaveRequestDataJSON, biometricDataJ
         .fillErrors()
         .finalizeDay()
     }
-    
-    // for (let i = 0; i < firstDay.daysInMonth(); i += 1) {
-    //     new extractADay()
-    //     .getAllEmployeesDataForDay(biometricDataJSON, moment(firstDay))
-    //     .fillReguluraizedData(regularizedDataJSON)
-    //     .fillLeaveRequestData(leaveRequestDataJSON)
-    //     .higlightErrors()
-    //     .finalizeDay()    
-    //     //call the writter after this too
-
-    //     //increment the next day
-    //     moment(firstDay).add(i,"days");
-    // }
-    
-    
-    
     return this;
 }
 
