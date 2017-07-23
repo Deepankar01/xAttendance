@@ -1,0 +1,27 @@
+{
+  "name": "xebia-attendance-amanger",
+  "version": "1.0.0",
+  "description": "Application to help xebia hr to calculate attendance of the employees",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/mac/team.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/team.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icons/png/512x512.png --prune=true --out=release-builds"
+  },
+  "keywords": [
+    "xlsx",
+    "electron"
+  ],
+  "author": "Deepankar Agrawal",
+  "license": "MIT",
+  "dependencies": {
+    "electron-prebuilt": "^1.4.13",
+    "immutable": "^3.8.1",
+    "json2xls": "^0.1.2",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "xlsx": "^0.10.8"
+  }
+}

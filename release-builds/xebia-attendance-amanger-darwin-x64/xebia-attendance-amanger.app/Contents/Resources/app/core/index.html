@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <div class="logo"><img src="images/logo.svg" /></div>
+            <div class="text">xAttendance</div>
+        </div>
+        <div class="body">
+            
+            <div class="upload-icons">
+                <div class="biometric">
+                    <div class="upload-container">
+                        <div class="logo">
+                            <div><img src="images/xls.svg" /></div>
+                            <input type="file" id="biometric-file" style="display: none;" accept=".xlsx"/>
+                        </div>
+                        <div class="text">
+                            <div>Upload biometric data</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="regularization">
+                    <div class="upload-container">
+                        <div class="logo">
+                            <div><img src="images/xls.svg" /></div>
+                            <input type="file" id="regularization-file" style="display: none;" accept=".xlsx"/>
+                        </div>
+                        <div class="text">
+                            <div>Upload regularization data</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="leave-request">
+                    <div class="upload-container">
+                        <div class="logo">
+                            <div><img src="images/xls.svg" /></div>
+                            <input type="file" id="leaveRequest-file" style="display: none;" accept=".xlsx"/>
+                        </div>
+                        <div class="text">
+                            <div>Upload leave request data</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-button">
+                <div>
+                    <button id="progress-button" type="button">Process</button>
+                    <button id="download-data" type="button">Download</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer">
+            <div class="text">v1.0.0</div>
+        </div>
+    </div>
+    <script src="./js/page.js"></script>
+</body>
+
+</html>

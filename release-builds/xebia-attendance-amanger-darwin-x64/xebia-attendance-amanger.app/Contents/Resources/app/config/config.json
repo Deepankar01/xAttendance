@@ -1,0 +1,15 @@
+{
+    "window":{
+        "fullscreen":false,
+        "frame":true,
+        "titleBarStyle":"hidden",
+        "width": 800, 
+        "height": 600,
+        "resizable": false,
+        "maximizable":false,
+        "fullscreenable":false,
+        "transparent":false,
+        "useContentSize":true,
+        "title":"xAttendance"
+    }
+}
