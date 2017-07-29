@@ -56,10 +56,12 @@ const extractADay = function () {
                         this.employeeDetails.A = parseInt(this.employeeDetails.A, 10) - 1;
                     }
                     else {
+                        //taht means the employee regularized the attendance but was present on the particular day
+                        // skiping this
                         if (this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] === "P") {
-                            this.employeeDetails.P = parseInt(this.employeeDetails.P, 10) - 1;
+                            //this.employeeDetails.P = parseInt(this.employeeDetails.P, 10) - 1;
                         }
-                        this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = "ERROR";
+                        //this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = "ERROR";
 
                     }
 
@@ -85,10 +87,12 @@ const extractADay = function () {
                         this.employeeDetails.L = parseInt(this.employeeDetails.L, 10) + 1;
                     }
                     else {
+                        //taht means the employee took the leave but was present on the particular day
+                        // skiping this
                         if (this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] === "P") {
-                            this.employeeDetails.P = parseInt(this.employeeDetails.P, 10) - 1;
+                            //this.employeeDetails.P = parseInt(this.employeeDetails.P, 10) - 1;
                         }
-                        this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = "ERROR"
+                        //this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = "ERROR"
                     }
                 }
             });
@@ -118,34 +122,34 @@ const extractADay = function () {
  */
 const selectRegularizedReason = (category) => {
     let status = "";
-    switch (category) {
-        case "Work From Home":
+    switch (category.toLowerCase()) {
+        case "work from home":
             status = "WFH";
             break;
-        case "Could not Login":
+        case "could not login":
             status = "LOGIN";
             break;
-        case "Early depart Compensation":
+        case "early depart compensation":
             status = "EARLYDEP";
             break;
-        case "Late coming Regularization":
+        case "late coming regularization":
             status = "LATE";
             break;
-        case "Late Compensation":
+        case "late compensation":
             status = "LATECOM";
             break;
-        case "Travel on Duty":
+        case "travel on duty":
             status = "TRAVEL";
             break;
-        case "Had forgotten to Login":
+        case "had forgotten to login":
             status = "FORGOTLOGIN";
             break;
-        case "Will be on Training":
+        case "will be on training":
         case "Was on Training":
             status = "TRAINING";
             break;
-        case "Will be on Duty/Official Tour":
-        case "Was on Duty/Official Tour":
+        case "will be on duty/official tour":
+        case "was on duty/official tour":
             status = "ONSITE";
             break;
         default:
@@ -160,10 +164,28 @@ const selectRegularizedReason = (category) => {
  */
 const selectLeaveRequestReason = (category) => {
     let status = "";
-    switch (category) {
-        case "CSLP-Casual/Sick Leave - Probationer":
+    switch (category.toLowerCase()) {
+        case "cslp-casual/sick leave - probationer":
             status = "CSLP";
             break;
+        case "el-earned leaves":
+            status = "EL";
+            break;
+        case "csl-casual/sick leave":
+            status = "CSL"
+            break;
+        case "elp-earned leaves - probationer":
+            status = "ELP";
+            break;
+        case "ol-optional leave":
+            status = "OL";
+            break;
+        case "com-comp off":
+            status = "COMPOFF";
+            break; 
+        case "bl-birthday / marriage anniversary leave":
+            status = "BL";
+            break;               
         default:
             status = "LEAVEREQUESTMESSEDUP";
 

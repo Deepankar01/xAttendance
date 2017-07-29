@@ -91,7 +91,6 @@ function downloadData(event) {
 }
 
 ipcRenderer.on("uploadFiles-reply", (event, args) => {
-    console.log(args);
     downloadFileLink = args;
     downloadButton.style.display = "";
 });
