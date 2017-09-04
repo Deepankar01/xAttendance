@@ -45,8 +45,8 @@ const extractADay = function () {
         //change the status of the particular date with the status of the day as P
         if (!_.isEmpty(this.regularizedData)) {
             this.regularizedData.forEach((regularization) => {
-                let from = moment(regularization.from, "DD-MMM-YY");
-                let to = moment(regularization.to, "DD-MMM-YY");
+                let from = moment(regularization.from, "MM-DD-YY");
+                let to = moment(regularization.to, "MM-DD-YY");
                 for (let i = 0; i <= to.diff(from, "days"); i += 1) {
                     if (this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] === "A") {
                         this.employeeDetails[moment(from).add(i, "days").format("DD-MMM")] = selectRegularizedReason(regularization.category);
