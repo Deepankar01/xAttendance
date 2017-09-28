@@ -8,7 +8,9 @@
     "start": "electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/mac/team.icns --prune=true --out=release-builds",
     "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/team.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
-    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icons/png/512x512.png --prune=true --out=release-builds"
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icons/png/512x512.png --prune=true --out=release-builds",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [
     "xlsx",
@@ -22,6 +24,8 @@
     "json2xls": "^0.1.2",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "xlsx": "^0.10.8"
-  }
+    "xlsx": "^0.10.8",
+    "snyk": "^1.41.1"
+  },
+  "snyk": true
 }
