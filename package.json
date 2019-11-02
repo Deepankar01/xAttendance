@@ -20,7 +20,7 @@
     "electron-prebuilt": "^1.4.13",
     "immutable": "^3.8.1",
     "json2xls": "^0.1.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "moment": "^2.18.1",
     "xlsx": "^0.12.2"
   }
